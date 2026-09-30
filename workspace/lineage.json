@@ -1,0 +1,11 @@
+{
+  "nodes": [
+    { "id": "postgres:source.public.orders", "label": "public.orders", "kind": "table", "source": "PostgreSQL" },
+    { "id": "airflow:orders_to_clickhouse.load_orders", "label": "load_orders", "kind": "task", "source": "Airflow" },
+    { "id": "clickhouse:default.orders", "label": "default.orders", "kind": "table", "source": "ClickHouse" }
+  ],
+  "edges": [
+    { "from": "postgres:source.public.orders", "to": "airflow:orders_to_clickhouse.load_orders", "evidence": "workspace/dags/orders_to_clickhouse.py" },
+    { "from": "airflow:orders_to_clickhouse.load_orders", "to": "clickhouse:default.orders", "evidence": "workspace/dags/orders_to_clickhouse.py" }
+  ]
+}

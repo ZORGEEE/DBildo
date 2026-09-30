@@ -1,0 +1,2 @@
+FROM apache/airflow:3.1.7
+RUN pip install --no-cache-dir psycopg2-binary==2.9.10 clickhouse-connect==0.9.2
